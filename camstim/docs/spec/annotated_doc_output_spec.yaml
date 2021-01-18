@@ -1,0 +1,340 @@
+##########################################
+# anotated_doc_output_spec.yaml          #
+# author: derricw                        #
+# Feb 23 2018                            #
+##########################################
+
+# Items are all the items in the experiment.
+# This is in preparation for a future when we could
+# potentially chain multiple sessions together or have a passive
+# and active session interleaved.  For now, the active session `behavior`
+# is the only relevant item.
+items:
+
+  # This is the primary section that houses the behavior data
+  # If the class instance is added to an experiment automatically, it is called
+  # 'behavior' by default.  You can undermine this behavior by naming it yourself
+  # but analysis might look for this key so maybe we should remove the ability to
+  # change the name.
+  behavior:
+    # `ai` and `ao` just let you know if analog input and output tasks were
+    # successfully configured for the session.  If so, they should contain the task
+    # id. Otherwise, they are None.
+    ai: None
+    ao: None
+    # Auto update is whether or not the behavior session is managing its own update
+    # schedule.  Should be True for most sessions for the forseable future. Let me know
+    # if you want more info on this.
+    auto_update: bool
+    # Path of the file if the session is loaded from a file.  We don't really use this feature
+    # yet and I'd like to rethink the way it works. It should be empty for now.
+    behavior_path: str
+    # The actual text of the file, if loaded from a file.
+    behavior_text: str
+    # Any parameters passed in from a json file via command line arg
+    cl_params: {}
+    # Task configuration
+    # This is read from the config file, then merged with anything specified in the script,
+    # then merged with anything specified via command line.
+    config:
+      # Whether to export data to OAG, and the ports to use
+      Datastream:
+        data_export: bool
+        data_export_port: int
+        data_export_rep_port: int
+        data_export_type: str
+      # Detection of change parameters, as specified in Doug's task definition.
+      DoC:
+        # Whether to wait until the current flash has ended before aborting a trial
+        abort_on_cycle_end: bool
+        # How much volume to reward on auto-rewards
+        auto_reward_volume: float # mL
+        # Blank duration range is something included in Doug's spec but not implemented
+        blank_duration_range: [float, float]
+        # Number of times to repeat trials where mouse fails to behave correctly
+        failure_repeats: int #trials
+        # Number of trials without licking until a free reward is given
+        free_reward_trials: int #trials
+        # Duration of initial blank period
+        initial_blank: float #sec
+        # Maximum task duration in minutes
+        max_task_duration_min: float #min
+        # Minimum time without a lick before a trial can end
+        # every lick at the end of a trial resets this timer
+        min_no_lick_time: float #sec
+        # [ON, OFF] stimulus duration in seconds
+        periodic_flash: [float, float] #[sec, sec]
+        # Minimum pre-change time in seconds
+        pre_change_time: float #sec
+        # Reponse window start-end in seconds
+        # from time of stimulus change
+        response_window: [float, float] #[sec, sec]
+        # Extra time to wait after all epochs are complete before killing trial
+        safety_timer_padding: float #sec
+        # Length of time period where a stimulus change can occur
+        stimulus_window: float #sec
+        # Duration of timeout period when trial is aborted
+        timeout_duration: float #sec
+        # whether to translate trials before publishing
+        trial_translator: bool
+        # number of automatic auto-rewards at start of session
+        warm_up_trials: int #trials
+      # configuration specific to behavior tasks in general
+      behavior: 
+        # Default monitor calibration is not currently used
+        default_monitor_calibration: str
+        # Whether do perform automatic LIMS upload.  not currently used
+        lims_upload: bool
+        # Mouse ID.  Usually overwritten by CL json file
+        mouse_id: str
+        # nidevice really only used for AO at the moment
+        nidevice: str
+        # Task ID is used by OAG to determine plot types
+        task_id: str
+        # Session automatically ends if mouse achieves volume limit
+        volume_limit: float
+      # Encoder IO configuration
+      # soon to specify encode type as well when PWM encoders happen
+      encoder: 
+        encodervinchannel: int
+        encodervsigchannel: int
+        nidevice: str
+      # Lick sensor configuration
+      lick:
+        # lick lines are a list of [port, line] pairs
+        lick_lines:
+        - [int, int]
+        nidevice: str
+      # Reward valve configuration
+      reward:
+        invert_logic: bool
+        nidevice: str
+        # reward lines are a list of [port, line] pairs
+        reward_lines:
+        - [int, int]
+        # reward volume is how much is dispensed when each reward is issued
+        reward_volume: float
+        # maximum number of rewards (not volume)? I don't think this does anything
+        rewardlimit: None
+      # Sync configuration is for setup up sync pulse lines and sync square
+      sync:
+        # (device, port, line) for session start/end trigger output
+        acq_on_pulse: None
+        # (device, port, line) for frame sync
+        frame_pulse: None
+        # Whether to show sync square
+        sync_sqr: bool
+        # Colors to cycle through for sync square (can be more than 2!)
+        sync_sqr_color_sequence: [float, float] #intensity: (-1, 1) -> (black, white)
+        # How many frames to stay at each color (misnamed, should be like half_period or something)
+        sync_sqr_freq: int #frames
+        # Sync square screen location
+        sync_sqr_loc: [int, int] #(pix, pix)
+        # size of square
+        sync_sqr_size: [int, int] #(pix, pix)
+    # path to the config file that was loaded
+    config_path: str
+    # encoder objects in the actual experiment
+    # will pretty much always be only one, but i am prepared for a scenario
+    # where the wheel is a treadmill with potentially more than one encoder
+    encoders:
+      # dx is the main data. it is the change in encoder degrees for each frame
+      # it is a float16 numpy array
+    - dx: numpy.ndarray
+      # encoder gain is pretty much always 1, not used anymore
+      gain: float
+      items: {}
+      unpickleable: []
+      value: float
+      vin: []
+      vsig: []
+    # frame pulse, if one was configured
+    frame_pulse: None
+    # Every experiment object can have its own items
+    # which are owned by it and are started/stopped when it is
+    items:
+      # used for remote control
+      remote_interface:
+        pub_port: str
+        rep_port: int
+      # some item I added without giving it a name
+      # I need to figure out what this is...
+      unnamed_item_1: {}
+    # vsync intervals for the psychopy display window
+    intervalsms: [float, ...]
+    # LickSensor objects and their data
+    # probably only one until we start doing multiple lick spout
+    # experiments
+    lick_sensors:
+    - items: {}
+      lick_data: [numpy.ndarray] # why this is in a list i'm going to have to check
+      lick_events: [] # frames where licks occurred
+      unpickleable: [str]  # here is an example of an object that contained something unpicklable
+    # Task handles for any nidaq tasks that the behavior session successfully instantiates
+    # none here because this was done at my desk without the hardware
+    nidaq_tasks: {}
+    # Params are passed in from the script
+    # they override the values in the config file
+    params:
+      auto_reward_volume: float
+      catch_freq: float
+      failure_repeats: int
+      max_task_duration_min: float
+      nidevice: str
+      periodic_flash: [float, float]
+      pre_change_time: float
+      response_window: [float, float]
+      reward_volume: float
+      stimulus_window: float
+      sync_sqr: bool
+      task_id: str
+      trial_translator: bool
+      volume_limit: float
+      warm_up_trials: int
+    # Reward objects configured in this experiment
+    # most of this is self-explanatory
+    # im noticing here that rewards doesn't track the frame
+    # that it was issued here in this object, even though it does
+    # below in the trial log.  I'll make it so that both keep track
+    rewards:
+    - items: {}
+      reward_count: int
+      reward_times: numpy.ndarray
+      unpickleable: [str]
+      volume_dispensed: float
+    # how many rewards were tracked by the DoC task
+    rewards_dispensed: int
+    # Stimuli are a dictionary of stimulus objects added to the task
+    # There should generally only be one for now, but be open to the possibility
+    # of many in the future
+    stimuli:
+    
+      natural_scenes:
+        # these four values are not used for this task type because
+        # stimulus changes are chosen by TrialGenerator
+        correct_freq: float
+        correct_table: None
+        incorrect_table: None
+        possibility_table: None
+        # Draw log has one value per frame.  it is 1 if the stimulus was
+        # drawn that frame, or 0 if it was not.
+        draw_log: [int, int, int, int, int, ...]
+        # Flash interval is the (on, off) flash interval in seconds
+        flash_interval_sec: [float, float] #[sec, sec]
+        # fps is currently only used for gratings that have
+        # a non-zero temporal frequency, not relevant for natural scenes
+        fps: float
+        # Image path (should be) the location of the image data file
+        # loaded. this is the same types of image data files that doug's
+        # program uses
+        image_path: str
+        # image walk is the change sequence loaded from DougO's sequence files
+        # i'll need to check and figure out why this is blank
+        image_walk: []
+        # stimuli, like all major objects in foraging2, can have their own child items
+        items: {}
+        kwargs: {}
+        # i'll have to check on this to see what this logs
+        log: []
+        obj_text: str
+        on_draw: {}
+        param_names: None
+        pos: [int, int]
+        # sampling type. only two supported so far: 'random' and 'exponential'
+        sampling: str
+        sequence: None
+        # Stimulus size. units are `units`
+        size: [float, float]
+        units: str
+        # Stim groups are the categories formatted (category_name, [img_name0, img_name1, ...])
+        stim_groups:
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        - - str
+          - [str]
+        stimulus: str
+        unpickleable: [str, str]
+        # update count is number of frames where this stimulus was updated.  should match len(draw_log)
+        update_count: int
+    # no sync pulse configured for this experiment
+    sync_pulse: None
+    # no sync square configured for this experiment
+    sync_sqr: None
+    # number of trials recorded
+    trial_count: int
+    # Trial log is the list of trials and the events logged in each trial
+    # includes licks, rewards, stimulus changes, epoc timepoints, etc
+    trial_log:
+    - cumulative_rewards: int
+      cumulative_volume: float
+      # events logged are formatted ("event_name", "direction", time, frame)
+      # direction is used to indicate entering or leaving epochs and is currently only used for
+      # epoch events
+      events:
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      - [str, str, float, int]
+      # trial index
+      index: int
+      # list of licks that happend in the trial
+      # format is [time, frame]
+      licks:
+      - [float, int]
+      # rewards have same format as licks
+      rewards: []
+      # stimulus changes are formatted
+      # (from_group, to_group, specific_img_name, time, frame)
+      stimulus_changes: [str, str, str, float, int]
+      # success is whether the mouse did the correct behavior on this trial
+      # this can be used to determine whether to repeat the trial
+      success: bool
+      # trial params are the values received from the trial generator
+      # the ones shown here are the minumum required for a DoC trial
+      # and the base DoC program automatically knows what to do with them
+      trial_params: {auto_reward: bool, catch: bool, change_time: float}
+    # no trigger output was set up for this trial
+    trigger_output: None
+    # Not sure what things were unpicklable but I need to look them up
+    unpickleable: [str, ...]
+    # how many times the detection of change task was updated.
+    update_count: int
+    # total volume dispensed
+    volume_dispensed: float
+    # str repr of window
+    window: str
+# platform info contains versions of various libraries and
+# info about the computer that the session was run on
+platform_info:
+  camstim: str
+  camstim_git_hash: str
+  hardware: [str, str]
+  opengl: str
+  os: [str, str, str]
+  psychopy: str
+  pyglet: str
+  python: str
+# start and stop time of the session
+start_time: datetime.datetime
+stop_time: datetime.datetime
+# threads are other QThreads that were set up to run during the session
+threads: []
+# I need to figure out what was unpicklable
+unpickleable: [str, ...]

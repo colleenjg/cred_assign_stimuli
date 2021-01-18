@@ -1,0 +1,9 @@
+/*/ 
+!/cred_assign_stims/
+!/example_videos/
+!/camstim/
+
+*.exe
+*.npy
+*.pyc
+*.txt

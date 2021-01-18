@@ -1,0 +1,14 @@
+from camstim import NaturalScenes
+import os
+
+path = r"C:\Users\derricw\Pictures\n_scenes\Natural Images"
+
+stimulus = NaturalScenes(image_path_list=path,
+                         window=window,
+                         sweep_length=0.25,
+                         start_time=0.0,
+                         stop_time=None,
+                         blank_length=0.0,
+                         blank_sweeps=100,
+                         runs=50,
+                         shuffle=True,)
