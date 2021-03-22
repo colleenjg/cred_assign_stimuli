@@ -54,7 +54,7 @@ To exit the presentation at any time, press `Ctrl-C` or `Esc`.
 `--fullscreen`  ->  produces the presentation in fullscreen mode.   
 _Note that the same stimulus seed used with different presentation window sizes produces **different stimuli**. Do not use if your aim is to reproduce a specific Credit Assignment session's stimuli, unless your screen is the same size (1920 x 1200 pixels)._  
 `--reproduce`    ->  checks that the presentation window size is correct for reproducing the Credit Assignment experiment, and raises an error if it is not.  
-`--warp`            ->  warps the stimuli on the screen, as was done during the experiment to simulate a spherical screen on a flat screen.  
+`--warp`             ->  warps the stimuli on the screen, as was done during the experiment to simulate a spherical screen on a flat screen.  
 &nbsp;
 
 `--save_frames`                                 ->  instead of presenting the stimuli, saves each new frame as an image, and produces a frame list file (see **Notes on saving frames**, below.)  
@@ -85,8 +85,9 @@ _Note that the same stimulus seed used with different presentation window sizes 
 
 ### Known bugs:
 - Non fullscreen presentation window may appear cropped, not showing the full frame image. The saved frames, however, do reflect the full frame image.
-- Lags (i.e., dropped frames) may occur during the stimulus presentation if sufficient compute resources are not available.
-- On rare occasions, stimuli fail to be drawn to occupy the full presentation window, e.g. corner quadrants remains gray. Typically, this occurs if the presentation window is minimized during the presentation or frame saving. In these cases, it is best to restart the recording.  
+- Lags (i.e., dropped frames) may occur during the stimulus presentation if sufficient compute resources are not available.  
+**NOTE:** _When saving frames, saved frames and `framelist.txt` will **not** reflect any lags._  
+- On rare occasions, stimuli fail to be drawn to occupy the full presentation window, e.g. corner quadrants remain gray. Typically, this occurs if the presentation window is minimized during the presentation or frame saving. If this occurs, it is best to restart the recording.  
 &nbsp;
 
 ### Warnings/messages printed to console which can be ignored:
@@ -105,11 +106,11 @@ During each session, subjects were presented with two stimulus types, in random 
 - Adapted from [Homann _et al._, 2017, _biorXiv_](https://www.biorxiv.org/content/biorxiv/early/2017/10/03/197608.full.pdf).
 - Each sequence lasted **1.5 sec** and cycled through the frames: **A, B, C, D, grayscreen (G)**.
 - For **each presentation session**, **new positions and sizes** were sampled for the 30 Gabor patches in each frame (A, B, C, and D).
-- Within a presentation session, at each sequence repetition, the **orientation** of each of the Gabor patch was resampled around the **sequence mean** (sampled from 0, 45, 90 or 135 degrees). 
+- Within a presentation session, at each sequence repetition, the **orientation** of each of the Gabor patches was resampled around the **sequence mean** (sampled from 0, 45, 90 or 135 degrees). 
 &nbsp;
 
 ### 2. Visual flow squares:
-- Randomly positioned squares moved **right** for one half of the stimulus presentation, and **left** for the other (order random).  
+- Randomly positioned squares moved **right** for one half of the stimulus presentation, and **left** for the other (direction order was random).  
 - All squares moved at the same speed.  
 &nbsp;
 
@@ -121,7 +122,7 @@ During each session, subjects were presented with two stimulus types, in random 
 ### **Optical physiology** sessions:
 - Lasted **70 min**.
 - Presentation time was equally split between the two stimulus types, presented in random order.
-- **Unexpected sequences or violations** were introduced, occurring around **10%** of the time.
+- **Unexpected sequences or violations** were introduced, occurring around **5-7%** of the time.
 #### 1. Sparse Gabor unexpected sequences: 
 - Unexpected sequences lasted **3-6 sec (2-4 consecutive sequences)**, and occurred every 30-90 sec.
 - During unexpected sequences, the D frames were replaced with **U frames**. 
