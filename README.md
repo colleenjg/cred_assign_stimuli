@@ -5,7 +5,7 @@ This repository contains the code needed to reproduce the stimuli used in the **
 
 The Credit Assignment experiment was conceptualized by [Joel Zylberberg](http://www.jzlab.org/) (York University), [Blake Richards](http://linclab.org/) (McGill University), [Timothy Lillicrap](http://contrastiveconvergence.net/~timothylillicrap/index.php) (DeepMind) and [Yoshua Bengio](https://yoshuabengio.org/) (Mila), and the stimuli were coded by [Colleen Gillon](https://sites.google.com/mila.quebec/linc-lab/team/colleen?authuser=0).
 
-The experiment details, analyses and results are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915v1). 
+The experiment details, analyses and results are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915v2). 
 &nbsp;
 
 ## Installation
@@ -122,15 +122,15 @@ During each session, subjects were presented with two stimulus types, in random 
 ### **Optical physiology** sessions:
 - Lasted **70 min**.
 - Presentation time was equally split between the two stimulus types, presented in random order.
-- **Unexpected sequences or violations** were introduced, occurring around **5-7%** of the time.
+- **Unexpected sequences or "surprises"** were introduced, occurring around **5-7%** of the time.
 #### 1. Sparse Gabor unexpected sequences: 
 - Unexpected sequences lasted **3-6 sec (2-4 consecutive sequences)**, and occurred every 30-90 sec.
 - During unexpected sequences, the D frames were replaced with **U frames**. 
 - Each session's **U frame Gabor patches** had **distinct locations and sizes** from the session's D frame Gabor patches. 
 - U frame Gabor patch orientations were sampled not from the sequence mean, but from the **sequence mean + 90 degrees**. So, they were about 90 degrees off from the rest of the sequence they appeared in.
 #### 2. Visual flow squares: 
-- Visual flow violations lasted **2-4 sec**, and occurred every 30-90 sec.  
-- During visual flow violations, **25% of squares** moved in the direction opposite to the main flow.  
+- Unexpected visual flow lasted **2-4 sec**, and occurred every 30-90 sec.  
+- During unexpected visual flow, **25% of squares** moved in the direction opposite to the main flow.  
 &nbsp;
 
 #### Code and documentation (excluding `camstim`) built by Colleen Gillon (University of Toronto).
