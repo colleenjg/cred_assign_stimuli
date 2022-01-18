@@ -35,7 +35,7 @@ The experiment details, analyses and results are published in [Gillon _et al._, 
 &nbsp;
 
 ## Run
-View an **optical physiology** session presentation (70 min) with the same parameters are used in the Credit Assignment project by running  
+View an **optical physiology** session presentation (70 min) with the same parameters as used in the Credit Assignment project by running  
 `python run_generate_stimuli.py`.  
 
 To exit the presentation at any time, press `Ctrl-C` or `Esc`.  
