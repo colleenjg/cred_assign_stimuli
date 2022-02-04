@@ -1,12 +1,15 @@
 # Credit Assignment Project Stimulus Code
 
-This repository contains the code needed to reproduce the stimuli used in the **Credit Assignment project**, an [Allen Institute for Brain Science](https://alleninstitute.org/what-we-do/brain-science/) [OpenScope](https://alleninstitute.org/what-we-do/brain-science/news-press/press-releases/openscope-first-shared-observatory-neuroscience) project. 
+This repository contains the code needed to reproduce the stimuli used in the **Credit Assignment project**, an [Allen Institute for Brain Science](https://alleninstitute.org/what-we-do/brain-science/) [OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/) project. 
 &nbsp;
 
 The Credit Assignment experiment was conceptualized by [Joel Zylberberg](http://www.jzlab.org/) (York University), [Blake Richards](http://linclab.org/) (McGill University), [Timothy Lillicrap](http://contrastiveconvergence.net/~timothylillicrap/index.php) (DeepMind) and [Yoshua Bengio](https://yoshuabengio.org/) (Mila), and the stimuli were coded by [Colleen Gillon](https://sites.google.com/mila.quebec/linc-lab/team/colleen?authuser=0).
 
 The experiment details, analyses and results are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915v2). 
 &nbsp;
+
+**NOTE:** If you are looking to design **your own stimuli** for use in the OpenScope data collection pipeline, please refer to the section on [deployment in the OpenScope pipeline](#deployment-in-the-openscope-pipeline).
+&nbsp;  
 
 ## Installation
 ### Dependencies:
@@ -27,7 +30,7 @@ The experiment details, analyses and results are published in [Gillon _et al._, 
     `conda env create -f cred_assign_stimuli.yml`
 2. Activate the environment.  
     `conda activate cred_assign_stimuli`
-3. Install the Allen Institute `camstim` package in the environment.  
+3. Install the Allen Institute's `camstim` package in the environment.  
     `pip install camstim/.`
 4. Revert the version of the `pillow` package (ignore incompatibility warning for `camstim`).  
     `pip install pillow==2.9.0`. 
@@ -112,6 +115,7 @@ During each session, subjects were presented with two stimulus types, in random 
 ### 2. Visual flow squares:
 - Randomly positioned squares moved **right** for one half of the stimulus presentation, and **left** for the other (direction order was random).  
 - All squares moved at the same speed.  
+- The visual flow squares are also called "Bricks" in the actual code.  
 &nbsp;
 
 ### **Habituation** sessions:
@@ -133,5 +137,17 @@ During each session, subjects were presented with two stimulus types, in random 
 - During unexpected visual flow, **25% of squares** moved in the direction opposite to the main flow.  
 &nbsp;
 
-#### Code and documentation (excluding `camstim`) built by Colleen Gillon (University of Toronto).
+## Deployment in the OpenScope pipeline
+If you are looking to design **your own stimuli** for use in the OpenScope data collection pipeline, please note that the scripts in this repository are **not the exact scripts that were deployed in the pipeline**. They have been modified so that users could conveniently reproduce, view and save our project stimuli. 
+
+The actual scripts deployed for data collection in the OpenScope pipeline can be found [here](https://github.com/colleenjg/cred_assign_stimuli_deployed/tree/production_v1), i.e., in the `cred_assign_stimuli_deployed` repository, under the `production_v1` commit tag.
+
+Note that the differences, when compared to the code in _this_ repository, are fairly minor. Mainly, **for deployment**:
+- All modules were integrated into a single script for each habituation day, and a single script for all the recording days.  
+- The parameters which could change from day to day (e.g., stimulus block durations) were hard-coded at the top of each day's script.  
+- No `__main__()` function or command line argument passing was implemented.
+- The frame saving option was **not** built in, as the scripts were intended for **live use** only.
+
+## Code
+Code and documentation (excluding `camstim`) built by Colleen Gillon (colleen _dot_ gillon _at_ mail _dot_ utoronto _dot_ ca).
 
