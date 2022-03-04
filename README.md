@@ -106,7 +106,7 @@ _Note that the same stimulus seed used with different presentation window sizes 
 During each session, subjects were presented with two stimulus types, in random order:  
 
 ### 1. Sparse Gabor sequences:
-- Adapted from [Homann _et al._, 2017, _biorXiv_](https://www.biorxiv.org/content/biorxiv/early/2017/10/03/197608.full.pdf).
+- Adapted from [Homann _et al._, 2022, _PNAS_](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8812573/).
 - Each sequence lasted **1.5 sec** and cycled through the frames: **A, B, C, D, grayscreen (G)**.
 - For **each presentation session**, **new positions and sizes** were sampled for the 30 Gabor patches in each frame (A, B, C, and D).
 - Within a presentation session, at each sequence repetition, the **orientation** of each of the Gabor patches was resampled around the **sequence mean** (sampled from 0, 45, 90 or 135 degrees). 
