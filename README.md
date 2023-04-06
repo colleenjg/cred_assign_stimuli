@@ -5,7 +5,7 @@ This repository contains the code needed to reproduce the stimuli used in the **
 
 The Credit Assignment experiment was conceptualized by [Joel Zylberberg](http://www.jzlab.org/) (York University), [Blake Richards](http://linclab.org/) (McGill University), [Timothy Lillicrap](http://contrastiveconvergence.net/~timothylillicrap/index.php) (DeepMind) and [Yoshua Bengio](https://yoshuabengio.org/) (Mila), and the stimuli were coded by [Colleen Gillon](https://sites.google.com/mila.quebec/linc-lab/team/colleen?authuser=0).
 
-The experiment details, analyses and results are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915v2). 
+The experiment details, analyses and results are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915). A dataset descriptor paper is forthcoming. 
 &nbsp;
 
 **NOTE:** If you are looking to design **your own stimuli** for use in the OpenScope data collection pipeline, please refer to the section on [deployment in the OpenScope pipeline](#deployment-in-the-openscope-pipeline).
