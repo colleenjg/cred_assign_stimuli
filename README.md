@@ -1,4 +1,4 @@
-# Credit Assignment Project Stimulus Code
+# OpenScope Credit Assignment Project Stimulus Code
 
 This repository contains the code needed to reproduce the stimuli used in the **Credit Assignment project**, an [Allen Institute for Brain Science](https://alleninstitute.org/what-we-do/brain-science/) [OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/) project. 
 &nbsp;
