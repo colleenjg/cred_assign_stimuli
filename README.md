@@ -5,7 +5,7 @@ This repository contains the code needed to reproduce the stimuli used in the **
 
 The Credit Assignment experiment was conceptualized by [Joel Zylberberg](http://www.jzlab.org/) (York University), [Blake Richards](http://linclab.org/) (McGill University), [Timothy Lillicrap](http://contrastiveconvergence.net/~timothylillicrap/index.php) (DeepMind) and [Yoshua Bengio](https://yoshuabengio.org/) (Mila), and the stimuli were coded by [Colleen Gillon](https://sites.google.com/mila.quebec/linc-lab/team/colleen?authuser=0).
 
-The dataset for which these stimuli were used is described in [Gillon _et al._, 2023](https://doi.org/10.1038/s41597-023-02214-y). Analyses run on the dataset are published in [Gillon _et al._, 2021, _bioRxiv_](https://www.biorxiv.org/content/10.1101/2021.01.15.426915). 
+The dataset for which these stimuli were used is described in [Gillon, Lecoq _et al._, 2023, _Sci Data_](https://doi.org/10.1038/s41597-023-02214-y). Analyses and results are published in [Gillon, Pina _et al._, 2024, _J Neurosci_](https://www.jneurosci.org/content/44/5/e1009232023). 
 &nbsp;
 
 **NOTE:** If you are looking to design **your own stimuli** for use in the OpenScope data collection pipeline, please refer to the section on [deployment in the OpenScope pipeline](#deployment-in-the-openscope-pipeline).
@@ -151,3 +151,40 @@ Note that the differences, when compared to the code in _this_ repository, are f
 ## Code
 Code and documentation (excluding `camstim`) built by Colleen Gillon (colleen _dot_ gillon _at_ mail _dot_ utoronto _dot_ ca).
 
+## Citations
+
+To cite the **dataset** paper:
+```
+@Article{GillonLecoq2023,
+  title={Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days},
+  author={Gillon, Colleen J. and Lecoq, J{\'e}r{\^o}me A. and Pina, Jason E. and Ahmed, Ruweida and Billeh, Yazan and Caldejon, Shiella and Groblewski, Peter and Henley, Timothy M. and Kato, India and Lee, Eric and Luviano, Jennifer and Mace, Kyla and Nayan, Chelsea and Nguyen, Thuyanh and North, Kat and Perkins, Jed and Seid, Sam and Valley, Matthew T. and Williford, Ali and Bengio, Yoshua and Lillicrap, Timothy P. and Zylberberg, Joel and Richards, Blake A.},
+  journal={Scientific Data},
+  year={2023},
+  date={May 2023},
+  publisher={Cold Spring Harbor Laboratory},
+  volume={10},
+  number={1},
+  pages={287},
+  issn={2052-4463},
+  doi={10.1038/s41597-023-02214-y},
+  url={https://www.nature.com/articles/s41597-023-02214-y},
+}
+```
+
+To cite the **analysis** paper:
+```
+@Article{GillonPina2024,
+  title={Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites},
+  author={Gillon, Colleen J. and Pina, Jason E. and Lecoq, J{\'e}r{\^o}me A. and Ahmed, Ruweida and Billeh, Yazan and Caldejon, Shiella and Groblewski, Peter and Henley, Timothy M. and Kato, India and Lee, Eric and Luviano, Jennifer and Mace, Kyla and Nayan, Chelsea and Nguyen, Thuyanh and North, Kat and Perkins, Jed and Seid, Sam and Valley, Matthew T. and Williford, Ali and Bengio, Yoshua and Lillicrap, Timothy P. and Richards, Blake A. and Zylberberg, Joel},
+  journal={Journal of Neuroscience},
+  year = {2024},
+  date = {Jan 2024},
+  publisher = {Society for Neuroscience},
+  volume = {44},
+  number = {5},
+  pages = {1-22},
+  issn = {0270-6474},
+  doi = {10.1523/JNEUROSCI.1009-23.2023},
+  url = {https://www.jneurosci.org/content/44/5/e1009232023},
+}
+```
